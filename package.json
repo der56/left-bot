@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "test":"echo"Error:no test specified\"&& exit1"
+  },
+  "engines": {
+    "node": "16.15.0",
+    "npm": "8.12.2"
   },
   "keywords": [],
   "author": "",
