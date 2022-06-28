@@ -1,5 +1,5 @@
 # left-bot
-- init the project with this ->  `$ npm init -y` `$ npm i`
+- init the project with this ->  `$ npm i`
 
 - then defines the local variables in the file **.env-example**
 
