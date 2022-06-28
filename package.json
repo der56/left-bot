@@ -1,0 +1,32 @@
+{
+  "name": "left-bot",
+  "version": "1.0.0",
+  "description": "- init the project with this ->  `$ npm init -y` `$ npm i`",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/der56/left-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/der56/left-bot/issues"
+  },
+  "homepage": "https://github.com/der56/left-bot#readme",
+  "dependencies": {
+    "@discordjs/rest": "^0.5.0",
+    "@discordjs/voice": "^0.10.0",
+    "bufferutil": "^4.0.6",
+    "canvas": "^2.9.3",
+    "discord-api-types": "^0.35.0",
+    "discord.js": "^13.8.1",
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.18",
+    "utf-8-validate": "^5.0.9"
+  }
+}

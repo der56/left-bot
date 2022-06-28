@@ -89,7 +89,7 @@ client.on("guildMemberRemove", async (member) => {
 client.on("messageCreate", (message) => {
     if(message.channel.id === process.env.VERIFICATE_CHANNEL) {
         if(message.content === 'Acepto') {
-            message.member.roles.add(process.env.VERIFICATE_ROLE);
+            message.member.roles.add(process.env.USER_ROLE);
             message.author.send('gracias por verificarte, disfruta del servidor!');
             message.delete();
         } else {
