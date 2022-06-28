@@ -28,7 +28,7 @@ client.on("channelCreate", async (channel) => {
 	.setTimestamp()
 	.setFooter({ text: 'fecha de creación' });
 
-    const channelCreate = client.channels.cache.get('990644064246452287');
+    const channelCreate = client.channels.cache.get(process.env.CHANNEL_CREATE);
     channelCreate.send({ embeds: [embedChannel] });
 });
 
@@ -40,18 +40,18 @@ client.on("roleCreate", async (role) => {
 	.setTimestamp()
 	.setFooter({ text: 'fecha de creación' });
 
-    const roleCreate = client.channels.cache.get('990644064246452287');
+    const roleCreate = client.channels.cache.get(process.env.ROLE_CREATE);
     roleCreate.send({ embeds: [embedRole] });
 });
 
 
 client.on("guildMemberAdd", async (member) => {
-    if(member.guild.id === "990577877491802132"){
+    if(member.guild.id === process.env.SERVER_ID){
         const Canvas = require("canvas")
         const canvas = Canvas.createCanvas(1018,468)
         const ctx = canvas.getContext("2d")
 
-        const background= await Canvas.loadImage("https://i.imgur.com/Phexq4K.jpeg");
+        const background= await Canvas.loadImage("https://www.ladymakeup.com/js/lightbox/img/demopage/image-3.jpg");
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
 
         ctx.fillStyle = "#ffffff"
@@ -69,16 +69,16 @@ client.on("guildMemberAdd", async (member) => {
         ctx.drawImage(avatar, 72, 63, 350, 350)
 
         const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "bienbenida.png")
-        client.channels.cache.get("990593353496285204").send({ files: [attachment] })
+        client.channels.cache.get(pocess.env.WELCOME_CHANNEL).send({ files: [attachment] })
     }
-    member.roles.add('990721613496475658');
+    member.roles.add(procces.env.VERIFICATE_ROLE);
 });
 
 
 
 client.on("guildMemberRemove", async (member) => {
-    if(member.guild.id === "990577877491802132"){
-        client.channels.cache.get("990593392041926656").send(`${member.user} abandono el server`)
+    if(member.guild.id === process.env.SERVER_ID){
+        client.channels.cache.get(process.env.BYE_CHANNEL).send(`${member.user} abandono el server`)
     }
 });
 
@@ -87,30 +87,9 @@ client.on("guildMemberRemove", async (member) => {
 
 
 client.on("messageCreate", (message) => {
-    if(message.content.startsWith('put')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('Put')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('Sex')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('sex')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('drog')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('gilipo')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('Gilipo')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('pen')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } else if(message.content.startsWith('Pen')) {
-        message.reply(`${message.author} no se admiten malas palabras si sigues con este comportamiento seras sancionado`);
-    } 
-    if(message.channel.id === '990593056933830757') {
+    if(message.channel.id === process.env.VERIFICATE_CHANNEL) {
         if(message.content === 'Acepto') {
-            message.member.roles.add('990579839637520414');
-            message.member.roles.add('990617410707021834');
-            message.member.roles.remove('990721613496475658');
+            message.member.roles.add(process.env.VERIFICATE_ROLE);
             message.author.send('gracias por verificarte, disfruta del servidor!');
             message.delete();
         } else {
@@ -121,4 +100,4 @@ client.on("messageCreate", (message) => {
 });
 
 
-client.login('OTkwNTkzMzUxMDU5MzgyMjcy.Go47J4.I6ULL3r5L6RBwqJHrEX2fk3OcV-uh7KhePjoq8');
+client.login(procces.env.TOKEN);
